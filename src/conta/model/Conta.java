@@ -93,7 +93,7 @@ public class Conta {
 		System.out.println("Agência: " + this.agencia);
 		System.out.println("Tipo da Conta: " + tipo);
 		System.out.println("Titular: " + this.titular);
-		System.out.println("Slado: " + this.saldo);
+		System.out.println("Saldo: " + this.saldo);
 	}
 	
 }
