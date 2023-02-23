@@ -2,6 +2,8 @@ package conta;
 
 import java.util.Scanner;
 
+import conta.util.Cores;
+
 public class Menu {
 	
 	public static void main(String[] args) {
@@ -12,7 +14,8 @@ public class Menu {
 
 		while (true) {
 
-			System.out.println("*****************************************************");
+			System.out.println(Cores.TEXT_GREEN + Cores.ANSI_BLACK_BACKGROUND +
+							   "*****************************************************");
 			System.out.println("                                                     ");
 			System.out.println("                BANCO DO GUILHERME                   ");
 			System.out.println("                                                     ");
