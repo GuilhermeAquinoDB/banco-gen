@@ -110,14 +110,61 @@ public class Menu {
 					break;
 				case 3:
 					System.out.println("Consultar dados da Conta - por número\n\n");
+					
+					System.out.print("Digite o número da conta: ");
+					numero = leia.nextInt();
+					
+					contas.procurarPorNumero(numero);
+					
 					keyPress();
 					break;
 				case 4:
 					System.out.println("Atualizar dados da Conta\n\n");
+					
+					System.out.print("Digite o número da conta: ");
+					numero = leia.nextInt();
+					
+					if ( contas.buscarNaCollection(numero) != null) {
+						 
+						System.out.print("Digite o numero da Agência: ");
+						agencia = leia.nextInt();
+						System.out.print("Digite o Nome do Titular: ");
+						leia.skip("\\R?");
+						titular = leia.nextLine();
+						
+						System.out.print("Digite o Saldo da Conta (R$): ");
+						saldo = leia.nextFloat();
+						
+						tipo = contas.retornaTipo(numero);
+						
+						switch (tipo) {
+							case 1 -> {
+								System.out.print("Digite o Limite de Crédito (R$): ");
+								limite = leia.nextFloat();
+								contas.atualizar(new ContaCorrente(numero, agencia, tipo, titular, saldo, limite));
+							}
+							case 2 -> {
+								System.out.print("Digite o dia do Aniversario da Conta: ");
+								aniversario = leia.nextInt();
+								contas.atualizar(new ContaPoupanca(numero, agencia, tipo, titular, saldo, aniversario));
+							}						
+							default -> {
+								System.out.print("Tipo de Conta inválido!");
+							}
+						}
+					} else
+						System.out.print("Conta não encontrada!");
+					
 					keyPress();
 					break;
 				case 5:
 					System.out.println("Apagar a Conta\n\n");
+					
+					System.out.print("Digite o número da Conta: ");
+					numero = leia.nextInt();
+					
+					contas.deletar(numero);
+					
 					keyPress();
 					break;
 				case 6:
