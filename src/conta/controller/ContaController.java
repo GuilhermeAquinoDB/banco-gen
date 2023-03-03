@@ -59,14 +59,26 @@ public class ContaController implements ContaRepository {
 
 	@Override
 	public void sacar(int numero, float valor) {
-		// TODO Auto-generated method stub
+		var buscaConta = buscarNaCollection(numero);
 		
+		if (buscaConta != null) {
+			
+			if (listaContas.get(listaContas.indexOf(buscaConta)).sacar(valor) == true)
+				System.out.print("O saque na Conta número: " + numero + " foi efetuado com sucesso!");
+		} else
+			System.out.print("A Conta número: " + numero + " não foi encontrada!");
 	}
 
 	@Override
 	public void depositar(int numero, float valor) {
-		// TODO Auto-generated method stub
+		var buscaConta = buscarNaCollection(numero);
 		
+		if (buscaConta != null) {
+			var indiceConta = listaContas.indexOf(buscaConta);
+			listaContas.get(indiceConta).depositar(valor);
+			System.out.print("O depósito na Conta número: " + numero + " foi efetuado com sucesso!");
+		} else
+			System.out.print("A Conta número: " + numero + " não foi encontrada ou a Conta destino não é uma Conta Corrente!");		
 	}
 
 	@Override

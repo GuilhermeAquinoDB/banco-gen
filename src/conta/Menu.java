@@ -17,9 +17,9 @@ public class Menu {
 			
 		Scanner leia = new Scanner(System.in);
 
-		int opcao, numero, agencia, tipo, aniversario;
+		int opcao, numero, agencia, tipo, aniversario, numeroDestino;
 		String titular;
-		float saldo, limite;
+		float saldo, limite, valor;
 		
 		System.out.println("Criar Contas\n");
 		
@@ -169,10 +169,32 @@ public class Menu {
 					break;
 				case 6:
 					System.out.println("Saque\n\n");
+					
+					System.out.print("Digite o Número da Conta: ");
+					numero = leia.nextInt();
+					
+					do {
+						System.out.print("Digite o Valor do Saque (R$): ");
+						valor = leia.nextFloat();
+					} while(valor <= 0);
+					
+					contas.sacar(numero, valor);
+					
 					keyPress();
 					break;
 				case 7:
 					System.out.println("Depósito\n\n");
+					
+					System.out.println("Digite o Número da Conta: ");
+					numero = leia.nextInt();
+					
+					do {
+						System.out.print("Digite o Valor do Depósito (R$): ");
+						valor = leia.nextFloat();
+					} while(valor <= 0);
+					
+					 contas.depositar(numero, valor);
+					
 					keyPress();
 					break;
 				case 8:
