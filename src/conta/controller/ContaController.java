@@ -83,8 +83,17 @@ public class ContaController implements ContaRepository {
 
 	@Override
 	public void transferir(int numeroOrigem, int numeroDestino, float valor) {
-		// TODO Auto-generated method stub
+		var buscaContaOrigem = buscarNaCollection(numeroOrigem);
+		var buscaContaDestino = buscarNaCollection(numeroDestino);
 		
+		if (buscaContaOrigem != null && buscaContaDestino != null) {
+			
+			if (listaContas.get(listaContas.indexOf(buscaContaOrigem)).sacar(valor) == true) {
+				listaContas.get(listaContas.indexOf(buscaContaDestino)).depositar(valor);
+				System.out.print("A Transferência foi efetuado com sucesso!");
+			}
+		} else
+			System.out.print("A Conta de Origem e/ou Destino não foram encontradas!");
 	}
 	
 	public int gerarNumero() {

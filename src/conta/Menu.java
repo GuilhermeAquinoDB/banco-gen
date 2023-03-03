@@ -199,6 +199,19 @@ public class Menu {
 					break;
 				case 8:
 					System.out.println("Transferência entre Contas\n\n");
+					
+					System.out.print("Digite o Número da Conta de Origem: ");
+					numero = leia.nextInt();
+					System.out.print("Digite o Número da Conta de Destino: ");
+					numeroDestino = leia.nextInt();
+					
+					do {
+						System.out.print("Digite o Valoe da Transferência (R$): ");
+						valor = leia.nextFloat();
+					} while(valor <= 0);
+					
+					contas.transferir(numero, numeroDestino, valor);
+					
 					keyPress();
 					break;
 				default:
